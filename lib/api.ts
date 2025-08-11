@@ -11,6 +11,7 @@ export interface NoteResponse {
 interface Params {
   page: number;
   search?: string;
+  tag?:string;
 }
 
 const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
@@ -22,7 +23,8 @@ const auth = {
 };
 export const fetchNotes = async (
   query: string,
-  page: number
+  page: number,
+  tag:string
 ): Promise<NoteResponse> => {
   const params: Params = {
     page,
@@ -30,6 +32,10 @@ export const fetchNotes = async (
 
   if (query) {
     params.search = query;
+  }
+
+  if (tag!=="All") {
+    params.tag = tag;
   }
 
   const response = await axios.get<NoteResponse>(
