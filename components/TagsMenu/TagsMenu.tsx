@@ -17,7 +17,7 @@ const TagsMenu = () => {
 
   return (
     <div className={css.menuContainer}>
-      <button onClick={toggle} className={css.menuButton}>Notes ▾</button>
+      <button onClick={toggle} className={css.menuButton}>Notes</button>
       {isOpen && (
       <ul className={css.menuList}>
         {tags.map((tag, index) => {
