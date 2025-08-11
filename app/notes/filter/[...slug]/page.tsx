@@ -1,4 +1,4 @@
-import { fetchNotes } from "@/lib/api";
+
 import NoteClient from "./Notes.client";
 
 type Props = {
