@@ -10,7 +10,7 @@ import NoteList from "@/components/NoteList/NoteList";
 import { fetchNotes } from "@/lib/api";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import NoteForm from "@/components/NoteForm/NoteForm";
-import Modal from "@/components/Modal/Modal";
+import Modal from "@/components/CreateNoteModal/Modal";
 import Pagination from "@/components/Pagination/Pagination";
 
 type Props = {
@@ -18,7 +18,7 @@ type Props = {
 };
 
 export default function NoteClient({ tag }: Props) {
-  console.log(tag);
+  // console.log(tag);
 
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);

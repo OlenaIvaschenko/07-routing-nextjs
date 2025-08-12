@@ -8,7 +8,7 @@ type Props = {
 const Notes = async ({ params }: Props) => {
   const { slug } = await params;
 
-  console.log(slug);
+  // console.log(slug);
 
   return <NoteClient tag={slug[0]} />;
 };
