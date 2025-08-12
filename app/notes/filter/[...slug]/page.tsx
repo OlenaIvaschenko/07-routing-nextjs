@@ -1,4 +1,4 @@
-
+import { fetchNotes } from "@/lib/api";
 import NoteClient from "./Notes.client";
 
 type Props = {
@@ -7,10 +7,11 @@ type Props = {
 
 const Notes = async ({ params }: Props) => {
   const { slug } = await params;
+  const response = await fetchNotes("", 1, slug[0]);
 
   // console.log(slug);
 
-  return <NoteClient tag={slug[0]} />;
+  return <NoteClient startData={response} tag={slug[0]} />;
 };
 
 export default Notes;

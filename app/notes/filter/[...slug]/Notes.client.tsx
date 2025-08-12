@@ -7,17 +7,20 @@ import { useState } from "react";
 import { useDebounce } from "use-debounce";
 
 import NoteList from "@/components/NoteList/NoteList";
-import { fetchNotes } from "@/lib/api";
+import { fetchNotes, NoteResponse } from "@/lib/api";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import Modal from "@/components/CreateNoteModal/Modal";
 import Pagination from "@/components/Pagination/Pagination";
 
+
+
 type Props = {
+  startData: NoteResponse;
   tag: string;
 };
 
-export default function NoteClient({ tag }: Props) {
+export default function NoteClient({startData, tag }: Props) {
   // console.log(tag);
 
   const [query, setQuery] = useState("");
@@ -33,7 +36,8 @@ export default function NoteClient({ tag }: Props) {
   const { data, isLoading, isError, isSuccess } = useQuery({
     queryKey: ["notes", debounceQuery, page, tag],
     queryFn: () => fetchNotes(debounceQuery, page, tag),
-
+    initialData: startData,
+    refetchOnMount: false,
     placeholderData: keepPreviousData,
   });
 
